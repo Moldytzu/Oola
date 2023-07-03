@@ -22,7 +22,7 @@ namespace Oola
             virtual void Tick();
         };
 
-        class OpenGLRenderer : public Renderer 
+        class OpenGLRenderer : public Renderer
         {
         public:
             SDL_Window *window;
@@ -34,4 +34,27 @@ namespace Oola
 
         extern Renderer *GlobalRender;
     };
+
+    namespace Physics
+    {
+        class Entity
+        {
+        public:
+            int x, y;                    // coordinates
+            int width, height;           // size
+            double velocityX, velocityY; // velocities
+
+            // collider box points
+            int left;
+            int right;
+            int top;
+            int bottom;
+
+            Entity();
+            Entity(int x, int y, int w, int h);
+        };
+
+        void BounceEntities(Entity a, Entity b);
+    };
+
 };
