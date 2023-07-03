@@ -19,7 +19,7 @@ run: game
 	./$(EXE)
 
 game: $(OBJS)
-	$(CPP) $(LIB) $(OBJS) -lSDL2main -lSDL2 -o $(EXE)
+	$(CPP) $(LIB) $(OBJS) -lSDL2main -lSDL2 -lGL -lGLU -o $(EXE)
 
 clean:
 	rm -f $(OBJS) $(EXE)
