@@ -17,7 +17,6 @@ int main()
     // init engine
     std::cout << "Oola " << OOLA_VERSION << std::endl;
 
-<<<<<<< HEAD
     SDLRendererInit();
     
     // call game start function
@@ -27,6 +26,4 @@ int main()
     {
         Oola::Tick();
     }
-
->>>>>>> d89ee66 (initialize sdl2 renderer and window)
 }
