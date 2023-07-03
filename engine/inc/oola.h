@@ -9,6 +9,12 @@ namespace Oola
     extern void Start();
     extern void Tick();
 
+    class Rectangle2D
+    {
+    public:
+        double x, y, width, height;
+    };
+
     namespace Render
     {
         class Renderer
@@ -37,24 +43,27 @@ namespace Oola
 
     namespace Physics
     {
-        class Entity
+        class ColliderBox2D : public Rectangle2D
         {
         public:
-            int x, y;                    // coordinates
-            int width, height;           // size
-            double velocityX, velocityY; // velocities
-
-            // collider box points
-            int left;
-            int right;
-            int top;
-            int bottom;
-
-            Entity();
-            Entity(int x, int y, int w, int h);
+            // NOTE: members inherited are actually offsets from the center of the entity
+            ColliderBox2D(double x, double y, double width, double height);
         };
 
-        void BounceEntities(Entity a, Entity b);
+        class Entity2D
+        {
+        public:
+            double x, y;                 // coordinates
+            double width, height;        // size
+            double velocityX, velocityY; // velocities
+
+            ColliderBox2D collider;
+
+            Entity2D();
+            Entity2D(double x, double y, double w, double h);
+        };
+
+        void BounceEntities(Entity2D a, Entity2D b);
     };
 
 };
