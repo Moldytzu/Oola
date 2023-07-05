@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 #include <oola.h>
 #include <SDL2/SDL.h>
 
@@ -27,8 +28,16 @@ int main()
     // event loop
     while (Render::GlobalRender->isActive)
     {
+        auto a = std::chrono::system_clock::now(); 
+
         Render::GlobalRender->Prepare(); // tick the renderer
         Core::Tick();                    // tick the game
         Render::GlobalRender->Render();  // render objects
+
+        auto b = std::chrono::system_clock::now();
+        double nanos = std::chrono::duration_cast<std::chrono::nanoseconds>(b - a).count();
+        Time::DeltaTime = nanos / Time::NanosecondsToSeconds;
+
+        Log::Info("dt: %f FPS: %f",Time::DeltaTime, 1/Time::DeltaTime);
     }
 }

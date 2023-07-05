@@ -37,6 +37,15 @@ namespace Oola
         void Fatal(const char *fmt, ...);
     };
 
+    namespace Time
+    {   
+        constexpr double NanosecondsToSeconds = 1000000000.0f;
+
+        inline double Uptime;    // time since the game was started
+        inline double DeltaTime; // time between frames
+        inline double FPS;       // frames per second
+    };
+
     namespace Render
     {
         class Vertex2D : public Core::Point2D // a vertex is a 2D point on the screen
