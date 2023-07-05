@@ -19,6 +19,7 @@ run: game
 	./$(EXE)
 
 game: $(OBJS)
+	@ mkdir -p $(BINDIR)
 	$(CPP) $(LIB) $(OBJS) -lSDL2main -lSDL2 -lGL -lGLU -o $(EXE)
 
 clean:
