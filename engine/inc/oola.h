@@ -13,6 +13,8 @@ namespace Oola
     {
     public:
         double x, y, width, height;
+
+        Rectangle2D(double x, double y, double width, double height);
     };
 
     namespace Render

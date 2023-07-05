@@ -3,9 +3,9 @@
 using namespace Oola::Physics;
 
 Entity2D::Entity2D() : x(0), y(0), collider(0, 0, 1, 1) {}
-Entity2D::Entity2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height), collider(x, y, width, height) {}
+Entity2D::Entity2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height), collider(0, 0, width, height) {}
 
-ColliderBox2D::ColliderBox2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height) {}
+ColliderBox2D::ColliderBox2D(double x, double y, double width, double height) : Rectangle2D(x, y, width, height) {}
 
 void BounceEntities(Entity2D a, Entity2D b) // bounce entities if collision is detected
 {
