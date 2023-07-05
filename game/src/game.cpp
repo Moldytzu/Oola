@@ -1,17 +1,17 @@
 #include <oola.h>
 #include <iostream>
 
-void Oola::EarlyStart()
+void Oola::Core::EarlyStart()
 {
     std::cout << "Early start\n";
 }
 
-void Oola::Start()
+void Oola::Core::Start()
 {
     std::cout << "Start\n";
 }
 
-void Oola::Tick()
+void Oola::Core::Tick()
 {
 
 }

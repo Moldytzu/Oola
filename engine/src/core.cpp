@@ -2,11 +2,15 @@
 #include <oola.h>
 #include <SDL2/SDL.h>
 
-Oola::Render::Renderer *GlobalRender;
+using namespace Oola;
+
+Render::Renderer *GlobalRender;
+
+Core::Rectangle2D::Rectangle2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height) {}
 
 int main()
 {
-    Oola::EarlyStart(); // function defined in the game ran before everything
+    Core::EarlyStart(); // function defined in the game ran before everything
 
     // init engine
     std::cout << "Oola " << OOLA_VERSION << std::endl;
@@ -15,12 +19,12 @@ int main()
     GlobalRender->Start();                           // start the renderer
 
     // call game start function
-    Oola::Start();
+    Core::Start();
 
     // event loop
     while (GlobalRender->isActive)
     {
         GlobalRender->Tick(); // tick the renderer
-        Oola::Tick();         // tick the game
+        Core::Tick();         // tick the game
     }
 }

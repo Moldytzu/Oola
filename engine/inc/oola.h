@@ -5,16 +5,24 @@
 
 namespace Oola
 {
-    extern void EarlyStart();
-    extern void Start();
-    extern void Tick();
-
-    class Rectangle2D
+    namespace Core
     {
-    public:
-        double x, y, width, height;
+        extern void EarlyStart();
+        extern void Start();
+        extern void Tick();
 
-        Rectangle2D(double x, double y, double width, double height);
+        class Rectangle2D
+        {
+        public:
+            double x, y, width, height;
+
+            Rectangle2D(double x, double y, double width, double height);
+        };
+    };
+
+    namespace Log
+    {
+
     };
 
     namespace Render
