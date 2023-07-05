@@ -2,7 +2,7 @@
 
 using namespace Oola::Physics;
 
-Entity2D::Entity2D() : x(0), y(0), width(1), height(1), top(0), left(0), right(1), bottom(1) {}
+Entity2D::Entity2D() : x(0), y(0), collider(0, 0, 1, 1) {}
 Entity2D::Entity2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height), collider(x, y, width, height) {}
 
 ColliderBox2D::ColliderBox2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height) {}
