@@ -22,7 +22,10 @@ namespace Oola
 
     namespace Log
     {
-
+        void Info(const char *fmt, ...);
+        void Warn(const char *fmt, ...);
+        void Error(const char *fmt, ...);
+        void Fatal(const char *fmt, ...);
     };
 
     namespace Render
@@ -53,7 +56,7 @@ namespace Oola
 
     namespace Physics
     {
-        class ColliderBox2D : public Rectangle2D
+        class ColliderBox2D : public Core::Rectangle2D
         {
         public:
             // NOTE: members inherited are actually offsets from the center of the entity

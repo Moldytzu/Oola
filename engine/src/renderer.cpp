@@ -1,7 +1,7 @@
 #include <oola.h>
 
-using namespace Oola::Render;
+using namespace Oola;
 
-Renderer::Renderer() : isActive(true) {}
-void Renderer::Start() {}
-void Renderer::Tick() {}
+Render::Renderer::Renderer() : isActive(true) {}
+void Render::Renderer::Start() {}
+void Render::Renderer::Tick() {}

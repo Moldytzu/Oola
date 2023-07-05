@@ -13,13 +13,17 @@ int main()
     Core::EarlyStart(); // function defined in the game ran before everything
 
     // init engine
-    std::cout << "Oola " << OOLA_VERSION << std::endl;
+    Log::Info("Starting Oola version %s", OOLA_VERSION);
 
     GlobalRender = new Oola::Render::OpenGLRenderer; // create a new opengl renderer
     GlobalRender->Start();                           // start the renderer
 
+    Log::Info("Initialising game");
+
     // call game start function
     Core::Start();
+
+    Log::Info("Running event loop");
 
     // event loop
     while (GlobalRender->isActive)

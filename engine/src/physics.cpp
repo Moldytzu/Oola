@@ -1,13 +1,13 @@
 #include <oola.h>
 
-using namespace Oola::Physics;
+using namespace Oola;
 
-Entity2D::Entity2D() : x(0), y(0), collider(0, 0, 1, 1) {}
-Entity2D::Entity2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height), collider(0, 0, width, height) {}
+Physics::Entity2D::Entity2D() : x(0), y(0), collider(0, 0, 1, 1) {}
+Physics::Entity2D::Entity2D(double x, double y, double width, double height) : x(x), y(y), width(width), height(height), collider(0, 0, width, height) {}
 
-ColliderBox2D::ColliderBox2D(double x, double y, double width, double height) : Rectangle2D(x, y, width, height) {}
+Physics::ColliderBox2D::ColliderBox2D(double x, double y, double width, double height) : Rectangle2D(x, y, width, height) {}
 
-void BounceEntities(Entity2D a, Entity2D b) // bounce entities if collision is detected
+void Physics::BounceEntities(Entity2D a, Entity2D b) // bounce entities if collision is detected
 {
     // if (a.bottom <= b.top)
     // {

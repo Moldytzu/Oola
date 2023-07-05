@@ -4,16 +4,12 @@
 #include <GL/glu.h>
 #include <iostream>
 
-using namespace Oola::Render;
+using namespace Oola;
 
-void OpenGLRenderer::Start()
+void Render::OpenGLRenderer::Start()
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-    {
-        std::cout << "SDL_Init failed with " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        abort();
-    }
+        Log::Fatal("SDL_Init failed with %s", SDL_GetError());
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2); // we want opengl 2.1
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1); //
@@ -23,31 +19,22 @@ void OpenGLRenderer::Start()
     SDL_GL_CreateContext(this->window);                                                                                                                                                             // create a context for opengl
 
     if (!window || !renderer) // check for initialisation errors
-    {
-        std::cout << "Renderer/Window creation failed with " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        abort();
-    }
+        Log::Fatal("Renderer/window creation failed with %s", SDL_GetError());
 
     this->isActive = true;
 
     // initialise opengl
     SDL_GL_SetSwapInterval(1);   // set vsync
     glMatrixMode(GL_PROJECTION); // set projection matrix
-    glLoadIdentity();
+    glLoadIdentity();            // load the matrix
+    glClearColor(0, 0, 0, 1.0f); // black
 
     GLenum error = glGetError();
     if (error != GL_NO_ERROR)
-    {
-        std::cout << "OpenGL failed with " << gluErrorString(error) << std::endl;
-        SDL_Quit();
-        abort();
-    }
-
-    glClearColor(0, 0, 0, 1.0f); // black
+        Log::Fatal("OpenGL failed with %s", gluErrorString(error));
 }
 
-void OpenGLRenderer::Tick()
+void Render::OpenGLRenderer::Tick()
 {
     // handle sdl events
     SDL_Event event;
