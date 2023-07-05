@@ -34,7 +34,7 @@ void Render::OpenGLRenderer::Start()
         Log::Fatal("OpenGL failed with %s", gluErrorString(error));
 }
 
-void Render::OpenGLRenderer::Tick()
+void Render::OpenGLRenderer::Prepare()
 {
     // handle sdl events
     SDL_Event event;
@@ -44,14 +44,20 @@ void Render::OpenGLRenderer::Tick()
             this->isActive = false;
     }
 
-    glClear(GL_COLOR_BUFFER_BIT); // clear colours
+    drawPipeline.clear(); // clear the pipeline
 
-    glBegin(GL_QUADS);        // begin drawing
-    glVertex2f(-0.5f, -0.5f); // left top point
-    glVertex2f(0.5f, -0.5f);  // right top point
-    glVertex2f(0.5f, 0.5f);   // right bottom point
-    glVertex2f(-0.5f, 0.5f);  // left bottom point
-    glEnd();                  // stop drawin
+    glClear(GL_COLOR_BUFFER_BIT); // clear colours
+}
+
+void Render::OpenGLRenderer::Render()
+{
+    for (Render::Mesh2D &mesh : drawPipeline) // iterate over all meshes
+    {
+        glBegin(GL_TRIANGLES);
+        for (Render::Vertex2D &vertex : mesh.vertices) // draw all vertices
+            glVertex2f(vertex.x, vertex.y);
+        glEnd();
+    }
 
     SDL_GL_SwapWindow(this->window); // swap buffers
 }

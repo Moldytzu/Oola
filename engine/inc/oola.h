@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include <vector>
 
 #define OOLA_VERSION "dev"
 
@@ -18,6 +19,14 @@ namespace Oola
 
             Rectangle2D(double x, double y, double width, double height);
         };
+
+        class Point2D
+        {
+        public:
+            double x, y;
+
+            Point2D(double x, double y);
+        };
     };
 
     namespace Log
@@ -30,15 +39,29 @@ namespace Oola
 
     namespace Render
     {
+        class Vertex2D : public Core::Point2D // a vertex is a 2D point on the screen
+        {
+        public:
+            Vertex2D(double x, double y);
+        };
+
+        class Mesh2D
+        {
+        public:
+            std::vector<Vertex2D> vertices; // collection of vertices
+        };
+
         class Renderer
         {
         public:
             bool isActive;
+            std::vector<Mesh2D> drawPipeline; // meshes to be drawn
 
             Renderer();
 
-            virtual void Start();
-            virtual void Tick();
+            virtual void Start();   // called at initialisation
+            virtual void Prepare(); // prepare a new frame
+            virtual void Render();  // render a frame
         };
 
         class OpenGLRenderer : public Renderer
@@ -47,11 +70,12 @@ namespace Oola
             SDL_Window *window;
             SDL_Renderer *renderer;
 
-            void Start();
-            void Tick();
+            void Start();   // called at initialisation
+            void Prepare(); // prepare a new frame
+            void Render();  // render a frame
         };
 
-        extern Renderer *GlobalRender;
+        inline Renderer *GlobalRender;
     };
 
     namespace Physics
