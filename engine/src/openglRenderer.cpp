@@ -32,6 +32,8 @@ void Render::OpenGLRenderer::Start()
     GLenum error = glGetError();
     if (error != GL_NO_ERROR)
         Log::Fatal("OpenGL failed with %s", gluErrorString(error));
+
+    Log::Info("Using OpenGL %s on %s by %s", glGetString(GL_VERSION), glGetString(GL_RENDERER), glGetString(GL_VENDOR));
 }
 
 void Render::OpenGLRenderer::Prepare()
