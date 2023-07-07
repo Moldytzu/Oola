@@ -9,6 +9,8 @@ Physics::ColliderBox2D::ColliderBox2D(double x, double y, double width, double h
 
 void Physics::BounceEntities(Entity2D a, Entity2D b) // bounce entities if collision is detected
 {
+    (void)a;
+    (void)b;
     // if (a.bottom <= b.top)
     // {
     //     a.velocityY = -a.velocityY;

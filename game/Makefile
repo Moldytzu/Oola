@@ -10,7 +10,7 @@ AR = ar
 LIB = ../engine/bin/oola.a
 EXE = $(BINDIR)/game.bin
 
-CPPFLAGS = -Iinc -I../engine/inc -g -std=c++20
+CPPFLAGS = -Iinc -I../engine/inc -g -std=c++20 -Werror -Wall -Wpedantic -Wextra -fno-exceptions
 
 SRC = $(call rwildcard,$(SRCDIR),*.cpp)  
 OBJS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))

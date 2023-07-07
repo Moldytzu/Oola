@@ -9,7 +9,7 @@ CPP = g++
 AR = ar
 LIB = $(BINDIR)/oola.a
 
-CPPFLAGS = -Iinc -g -std=c++20
+CPPFLAGS = -Iinc -g -std=c++20 -Werror -Wall -Wpedantic -Wextra -fno-exceptions
 
 SRC = $(call rwildcard,$(SRCDIR),*.cpp)  
 OBJS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))
