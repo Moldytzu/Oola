@@ -10,9 +10,9 @@ void Oola::Core::EarlyStart()
 
 void Oola::Core::Start()
 {
-    mesh.vertices.push_back(Render::Vertex2D(0,0));
-    mesh.vertices.push_back(Render::Vertex2D(-0.5f,-0.5f));
-    mesh.vertices.push_back(Render::Vertex2D(0.5f,-0.5f));
+    mesh.PushVertex(0,0);
+    mesh.PushVertex(-0.5f,-0.5f);
+    mesh.PushVertex(0.5f,-0.5f);
     std::cout << "Start\n";
 }
 

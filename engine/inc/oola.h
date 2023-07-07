@@ -58,6 +58,10 @@ namespace Oola
         {
         public:
             std::vector<Vertex2D> vertices; // collection of vertices
+
+            // wrapper function
+            void PushVertex(double x, double y);
+            void PushVertex(const Vertex2D &vertex); 
         };
 
         class Renderer
