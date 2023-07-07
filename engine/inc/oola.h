@@ -38,12 +38,13 @@ namespace Oola
     };
 
     namespace Time
-    {   
+    {
         constexpr double NanosecondsToSeconds = 1000000000.0f;
 
-        inline double Uptime;    // time since the game was started
-        inline double DeltaTime; // time between frames
-        inline double FPS;       // frames per second
+        inline double Uptime;            // time since the game was started
+        inline double DeltaTime;         // time between frames
+        inline double FPS;               // frames per second
+        inline double TargetFPS = 60.0f; // max frames per second
     };
 
     namespace Render
@@ -61,7 +62,7 @@ namespace Oola
 
             // wrapper function
             void PushVertex(double x, double y);
-            void PushVertex(const Vertex2D &vertex); 
+            void PushVertex(const Vertex2D &vertex);
         };
 
         class Renderer
